@@ -10,11 +10,8 @@ rust.then(m => {
     alert('Failed initialize WebGl');
     return;
   }
-  
-  gl.enable(gl.BLEND);
-  gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINNUS_SRC_ALPHA);
-  
-  const dougsClient = new m.DougsClient();
+ 
+  const client = new m.Client();
   const initialTime = Date.now();
   
   const FPS_THROTTLE = 1000.0 / 30.0;
@@ -40,8 +37,8 @@ rust.then(m => {
       }
       
       let elapsedTime = currTime - initialTime;
-      dougsClient.update(elapsedTime, window.innerHeight, window.innerWidth);
-      dougsClient.render();
+      client.update(elapsedTime, window.innerHeight, window.innerWidth);
+      client.render();
     }
   }
   
