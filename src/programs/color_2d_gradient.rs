@@ -90,8 +90,11 @@ impl Color2DGradient {
         gl.vertex_attrib_pointer_with_i32(1, 4, GL::FLOAT, false, 0, 0);
         gl.enable_vertex_attrib_array(1);
 
+        let time = crate::app_state::get_curr_state().time;
+        let color = f32::sin(time / 1000.);
+
         let colors: [f32; 16] = [
-            1., 0., 0., 1., 0., 1., 0., 1., 0., 0., 1., 1., 1., 1., 1., 1.,
+            color, 0., 0., 1., 0., color, 0., 1., 0., 0., color, 1., 1., 1., 1., 1.,
         ];
 
         let colors_memory_buffer = wasm_bindgen::memory()
